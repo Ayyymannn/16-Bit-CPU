@@ -1,0 +1,18 @@
+ORG 0x0000
+    LOADIMM.UPPER 0x00
+    LOADIMM.LOWER 0x03
+    MOV R1, R7
+    LOADIMM.UPPER 0x00
+    LOADIMM.LOWER 0x05
+    MOV R2, R7
+    LOADIMM.LOWER 4
+    LOADIMM.UPPER 4
+    MOV R3, R7 ; move 0x0404 to R3
+    STORE R3, R1 ; store 03 to 0x0404
+    LOAD R4, R3 ; load 03 from 0x0404 into R4
+    ADD R5, R2, R4 ; add 03 to 05 = 8
+    SHL R5, 1 ; 8X2 =16
+    MUL R5, R5, R1 ; = 48
+    NAND R5, R5, R5 ; = 0XFFCF
+    OUT R5 
+END
